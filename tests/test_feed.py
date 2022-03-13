@@ -23,7 +23,11 @@ async def test_update_ok(aresponses, event_loop):
 
     async with aiohttp.ClientSession(loop=event_loop) as websession:
 
-        feed = GenericFeed(websession, home_coordinates, "https://www.rfs.nsw.gov.au/feeds/majorIncidents.json")
+        feed = GenericFeed(
+            websession,
+            home_coordinates,
+            "https://www.rfs.nsw.gov.au/feeds/majorIncidents.json",
+        )
         assert (
             repr(feed) == "<GenericFeed("
             "home=(-31.0, 151.0), "
@@ -74,7 +78,11 @@ async def test_empty_feed(aresponses, event_loop):
 
     async with aiohttp.ClientSession(loop=event_loop) as websession:
 
-        feed = GenericFeed(websession, home_coordinates, "https://www.rfs.nsw.gov.au/feeds/majorIncidents.json")
+        feed = GenericFeed(
+            websession,
+            home_coordinates,
+            "https://www.rfs.nsw.gov.au/feeds/majorIncidents.json",
+        )
         assert (
             repr(feed) == "<GenericFeed("
             "home=(-41.2, 174.7), "
