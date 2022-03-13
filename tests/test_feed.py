@@ -1,4 +1,4 @@
-"""Test for the NSW Rural Fire Service Incidents GeoJSON feed."""
+"""Test for the generic GeoJSON feed."""
 import datetime
 
 import aiohttp
