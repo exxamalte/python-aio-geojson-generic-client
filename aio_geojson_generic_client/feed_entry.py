@@ -9,11 +9,7 @@ import pytz
 from aio_geojson_client.feed_entry import FeedEntry
 from geojson import Feature
 
-from .consts import (
-    ATTR_GUID,
-    ATTR_PUB_DATE,
-    ATTR_TITLE, ATTR_ID,
-)
+from .consts import ATTR_GUID, ATTR_ID, ATTR_PUB_DATE, ATTR_TITLE
 
 _LOGGER = logging.getLogger(__name__)
 
