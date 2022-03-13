@@ -12,9 +12,7 @@ from .feed_entry import GenericFeedEntry
 _LOGGER = logging.getLogger(__name__)
 
 
-class GenericFeed(
-    GeoJsonFeed[GenericFeedEntry]
-):
+class GenericFeed(GeoJsonFeed[GenericFeedEntry]):
     """Generic GeoJSON feed."""
 
     def __init__(
