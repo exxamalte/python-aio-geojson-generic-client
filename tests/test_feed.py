@@ -60,9 +60,10 @@ async def test_update_ok(aresponses, event_loop):
         feed_entry = entries[1]
         assert feed_entry is not None
         assert feed_entry.title == "Title 2"
+        assert feed_entry.external_id == "Title 2"
 
         feed_entry = entries[2]
-        assert feed_entry.title == "Title 3"
+        assert feed_entry.external_id == hash((-37.2345, 149.1234))
 
         feed_entry = entries[3]
         assert feed_entry.title == "Badja Forest Rd, Countegany"
