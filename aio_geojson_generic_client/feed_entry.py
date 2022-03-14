@@ -3,7 +3,7 @@ import calendar
 import logging
 from datetime import datetime
 from time import strptime
-from typing import Tuple
+from typing import Dict, Optional, Tuple
 
 import pytz
 from aio_geojson_client.feed_entry import FeedEntry
@@ -53,3 +53,10 @@ class GenericFeedEntry(FeedEntry):
                 calendar.timegm(date_struct), tz=pytz.utc
             )
         return publication_date
+
+    @property
+    def properties(self) -> Optional[Dict]:
+        """Return all properties found for this entry."""
+        if self._feature and self._feature.properties:
+            return self._feature.properties
+        return None

@@ -49,6 +49,13 @@ async def test_update_ok(aresponses, event_loop):
         assert feed_entry.publication_date == datetime.datetime(
             2018, 9, 21, 6, 30, tzinfo=datetime.timezone.utc
         )
+        assert feed_entry.properties == {
+            "title": "Title 1",
+            "category": "Category 1",
+            "guid": "1234",
+            "pubDate": "21/09/2018 6:30:00 AM",
+            "description": "ALERT LEVEL: Alert Level 1 <br />LOCATION: Location 1 <br />COUNCIL AREA: Council 1 <br />STATUS: Status 1 <br />TYPE: Type 1 <br />FIRE: Yes <br />SIZE: 10 ha <br />RESPONSIBLE AGENCY: Agency 1 <br />UPDATED: 21 Sep 2018 16:45",
+        }
 
         feed_entry = entries[1]
         assert feed_entry is not None
