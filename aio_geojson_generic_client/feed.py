@@ -49,7 +49,8 @@ class GenericFeed(GeoJsonFeed[GenericFeedEntry]):
                 filter(None, [entry.publication_date for entry in feed_entries]),
                 reverse=True,
             )
-            return dates[0]
+            if dates:
+                return dates[0]
         return None
 
     def _extract_from_feed(self, feed: FeatureCollection) -> Optional[Dict]:
