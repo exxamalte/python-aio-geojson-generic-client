@@ -1,6 +1,6 @@
 # python-aio-geojson-generic-client
 
-[![Build Status](https://github.com/exxamalte/python-aio-geojson-generic-client/workflows/CI/badge.svg?branch=master)](https://github.com/exxamalte/python-aio-geojson-generic-client/actions?workflow=CI)
+[![Build Status](https://github.com/exxamalte/python-aio-geojson-generic-client/workflows/CI/badge.svg?branch=main)](https://github.com/exxamalte/python-aio-geojson-generic-client/actions?workflow=CI)
 [![codecov](https://codecov.io/gh/exxamalte/python-aio-geojson-generic-client/branch/main/graph/badge.svg?token=F5ZEM1UO56)](https://codecov.io/gh/exxamalte/python-aio-geojson-generic-client)
 [![PyPi](https://img.shields.io/pypi/v/aio-geojson-generic-client.svg)](https://pypi.python.org/pypi/aio-geojson-generic-client)
 [![Version](https://img.shields.io/pypi/pyversions/aio-geojson-generic-client.svg)](https://pypi.python.org/pypi/aio-geojson-generic-client)
