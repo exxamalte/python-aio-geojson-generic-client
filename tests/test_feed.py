@@ -17,7 +17,7 @@ async def test_update_ok(aresponses, event_loop):
         "www.rfs.nsw.gov.au",
         "/feeds/majorIncidents.json",
         "get",
-        aresponses.Response(text=load_fixture("incidents-1.json"), status=200),
+        aresponses.Response(text=load_fixture("feed-1.json"), status=200),
         match_querystring=True,
     )
 
@@ -79,7 +79,7 @@ async def test_empty_feed(aresponses, event_loop):
         "www.rfs.nsw.gov.au",
         "/feeds/majorIncidents.json",
         "get",
-        aresponses.Response(text=load_fixture("incidents-2.json"), status=200),
+        aresponses.Response(text=load_fixture("feed-2.json"), status=200),
         match_querystring=True,
     )
 
