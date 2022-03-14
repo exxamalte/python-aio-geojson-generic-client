@@ -5,7 +5,7 @@
 [![PyPi](https://img.shields.io/pypi/v/aio-geojson-generic-client.svg)](https://pypi.python.org/pypi/aio-geojson-generic-client)
 [![Version](https://img.shields.io/pypi/pyversions/aio-geojson-generic-client.svg)](https://pypi.python.org/pypi/aio-geojson-generic-client)
 
-This library provides convenient async generic access to GeoJSON feeds.
+This library provides convenient async generic access to [GeoJSON](https://datatracker.ietf.org/doc/html/rfc7946) feeds.
 
 ## Installation
 `pip install aio-geojson-generic-client`
@@ -60,14 +60,15 @@ asyncio.get_event_loop().run_until_complete(main())
 ## Feed entry properties
 Each feed entry is populated with the following properties:
 
-| Name               | Description                                                                                         | Feed attribute |
-|--------------------|-----------------------------------------------------------------------------------------------------|----------------|
-| geometries         | All geometry details of this entry.                                                                 | `geometry`     |
-| coordinates        | Best coordinates (latitude, longitude) of this entry.                                               | `geometry`     |
-| external_id        | The unique public identifier for this incident.                                                     | `guid`         |
-| title              | Title of this entry (if provided).                                                                                | `title`        |
-| distance_to_home   | Distance in km of this entry to the home coordinates.                                               | n/a            |
-| publication_date   | The publication date of the incidents.                                                              | `pubDate`      |
+| Name               | Description                                                                                         | Feed attribute                               |
+|--------------------|-----------------------------------------------------------------------------------------------------|----------------------------------------------|
+| geometries         | All geometry details of this entry.                                                                 | `geometry`                                   |
+| coordinates        | Best coordinates (latitude, longitude) of this entry.                                               | `geometry`                                   |
+| external_id        | The unique public identifier for this incident.                                                     | `id`, `guid`, `title` or hash of coordinates |
+| title              | Title of this entry (if provided).                                                                  | `title`                                      |
+| distance_to_home   | Distance in km of this entry to the home coordinates.                                               | n/a                                          |
+| publication_date   | The publication date of the entry (if provided).                                                    | `pubDate`                                    |
+| properties         | All properties defined for this entry.                                                              | `properties`                                 |
 
 
 ## Feed Manager

@@ -49,6 +49,13 @@ async def test_update_ok(aresponses, event_loop):
         assert feed_entry.publication_date == datetime.datetime(
             2018, 9, 21, 6, 30, tzinfo=datetime.timezone.utc
         )
+        assert feed_entry.properties == {
+            "title": "Title 1",
+            "category": "Category 1",
+            "guid": "1234",
+            "pubDate": "21/09/2018 6:30:00 AM",
+            "description": "ALERT LEVEL: Alert Level 1 <br />LOCATION: Location 1 <br />COUNCIL AREA: Council 1 <br />STATUS: Status 1 <br />TYPE: Type 1 <br />FIRE: Yes <br />SIZE: 10 ha <br />RESPONSIBLE AGENCY: Agency 1 <br />UPDATED: 21 Sep 2018 16:45",
+        }
 
         feed_entry = entries[1]
         assert feed_entry is not None
@@ -95,3 +102,47 @@ async def test_empty_feed(aresponses, event_loop):
         assert entries is not None
         assert len(entries) == 0
         assert feed.last_timestamp is None
+
+
+@pytest.mark.asyncio
+async def test_feed_entry_properties(aresponses, event_loop):
+    """Test updating feed is ok with focus on properties."""
+    home_coordinates = (-41.2, 174.7)
+    aresponses.add(
+        "www.rfs.nsw.gov.au",
+        "/feeds/majorIncidents.json",
+        "get",
+        aresponses.Response(text=load_fixture("feed-3.json"), status=200),
+        match_querystring=True,
+    )
+
+    async with aiohttp.ClientSession(loop=event_loop) as websession:
+
+        feed = GenericFeed(
+            websession,
+            home_coordinates,
+            "https://www.rfs.nsw.gov.au/feeds/majorIncidents.json",
+        )
+        assert (
+            repr(feed) == "<GenericFeed("
+            "home=(-41.2, 174.7), "
+            "url=https://www.rfs.nsw.gov.au"
+            "/feeds/majorIncidents.json, "
+            "radius=None)>"
+        )
+        status, entries = await feed.update()
+        assert status == UPDATE_OK
+        assert entries is not None
+        assert len(entries) == 3
+
+        feed_entry = entries[0]
+        assert feed_entry.properties == {
+            "property1": "value1",
+            "property2": "value2",
+        }
+
+        feed_entry = entries[1]
+        assert feed_entry.properties is None
+
+        feed_entry = entries[2]
+        assert feed_entry.properties is None
