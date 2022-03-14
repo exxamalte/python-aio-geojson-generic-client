@@ -16,7 +16,7 @@ async def test_feed_manager(aresponses, event_loop):
         "www.rfs.nsw.gov.au",
         "/feeds/majorIncidents.json",
         "get",
-        aresponses.Response(text=load_fixture("incidents-1.json"), status=200),
+        aresponses.Response(text=load_fixture("feed-1.json"), status=200),
         match_querystring=True,
     )
 
