@@ -9,7 +9,7 @@ DESCRIPTION = "An generic async GeoJSON client library."
 URL = "https://github.com/exxamalte/python-aio-geojson-generic-client"
 
 REQUIRES = [
-    "aio_geojson_client>=0.17",
+    "aio_geojson_client>=0.18",
     "aiohttp>=3.7.4,<4",
     "pytz>=2019.01",
 ]
