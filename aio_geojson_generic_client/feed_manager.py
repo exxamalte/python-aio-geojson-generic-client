@@ -1,5 +1,5 @@
 """Feed Manager for Generic GeoJSON feed."""
-from typing import Awaitable, Callable, List, Tuple
+from typing import Awaitable, Callable, Tuple
 
 from aio_geojson_client.feed_manager import FeedManagerBase
 from aio_geojson_client.status_update import StatusUpdate
