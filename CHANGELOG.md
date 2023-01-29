@@ -1,5 +1,12 @@
 # Changes
 
+## 0.2 (30/01/2023)
+* Added Python 3.11 support.
+* Removed deprecated asynctest dependency.
+* Small code quality enhancements.
+* Bumped version of upstream aio_geojson_client library to 0.18.
+* Bumped dependencies: geojson.
+
 ## 0.1 (14/03/2022)
 * Initial release with support for generic GeoJSON feeds.
 * Calculating distance to home coordinates.
