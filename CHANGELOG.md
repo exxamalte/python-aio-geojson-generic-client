@@ -1,5 +1,9 @@
 # Changes
 
+## 0.3 (30/01/2023)
+* Restrict geojson dependency to smaller than version 3, to avoid a conflicting 
+  dependency with pyowm in Home Assistant.
+
 ## 0.2 (30/01/2023)
 * Added Python 3.11 support.
 * Removed deprecated asynctest dependency.
