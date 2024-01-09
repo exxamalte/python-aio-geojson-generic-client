@@ -21,7 +21,6 @@ async def test_feed_manager(mock_aioresponse):
     )
 
     async with aiohttp.ClientSession(loop=asyncio.get_running_loop()) as websession:
-
         # This will just record calls and keep track of external ids.
         generated_entity_external_ids = []
         updated_entity_external_ids = []

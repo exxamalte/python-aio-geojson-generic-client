@@ -22,7 +22,6 @@ async def test_update_ok(mock_aioresponse):
     )
 
     async with aiohttp.ClientSession(loop=asyncio.get_running_loop()) as websession:
-
         feed = GenericFeed(
             websession,
             home_coordinates,
@@ -83,7 +82,6 @@ async def test_empty_feed(mock_aioresponse):
     )
 
     async with aiohttp.ClientSession(loop=asyncio.get_running_loop()) as websession:
-
         feed = GenericFeed(
             websession,
             home_coordinates,
@@ -114,7 +112,6 @@ async def test_feed_entry_properties(mock_aioresponse):
     )
 
     async with aiohttp.ClientSession(loop=asyncio.get_running_loop()) as websession:
-
         feed = GenericFeed(
             websession,
             home_coordinates,
