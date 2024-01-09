@@ -1,5 +1,7 @@
 """Test for the generic GeoJSON feed."""
+import asyncio
 import datetime
+from http import HTTPStatus
 
 import aiohttp
 import pytest
@@ -10,18 +12,16 @@ from tests.utils import load_fixture
 
 
 @pytest.mark.asyncio
-async def test_update_ok(aresponses, event_loop):
+async def test_update_ok(mock_aioresponse):
     """Test updating feed is ok."""
     home_coordinates = (-31.0, 151.0)
-    aresponses.add(
-        "www.rfs.nsw.gov.au",
-        "/feeds/majorIncidents.json",
-        "get",
-        aresponses.Response(text=load_fixture("feed-1.json"), status=200),
-        match_querystring=True,
+    mock_aioresponse.get(
+        "https://www.rfs.nsw.gov.au/feeds/majorIncidents.json",
+        status=HTTPStatus.OK,
+        body=load_fixture("feed-1.json"),
     )
 
-    async with aiohttp.ClientSession(loop=event_loop) as websession:
+    async with aiohttp.ClientSession(loop=asyncio.get_running_loop()) as websession:
 
         feed = GenericFeed(
             websession,
@@ -73,18 +73,16 @@ async def test_update_ok(aresponses, event_loop):
 
 
 @pytest.mark.asyncio
-async def test_empty_feed(aresponses, event_loop):
+async def test_empty_feed(mock_aioresponse):
     """Test updating feed is ok when feed does not contain any entries."""
     home_coordinates = (-41.2, 174.7)
-    aresponses.add(
-        "www.rfs.nsw.gov.au",
-        "/feeds/majorIncidents.json",
-        "get",
-        aresponses.Response(text=load_fixture("feed-2.json"), status=200),
-        match_querystring=True,
+    mock_aioresponse.get(
+        "https://www.rfs.nsw.gov.au/feeds/majorIncidents.json",
+        status=HTTPStatus.OK,
+        body=load_fixture("feed-2.json"),
     )
 
-    async with aiohttp.ClientSession(loop=event_loop) as websession:
+    async with aiohttp.ClientSession(loop=asyncio.get_running_loop()) as websession:
 
         feed = GenericFeed(
             websession,
@@ -106,18 +104,16 @@ async def test_empty_feed(aresponses, event_loop):
 
 
 @pytest.mark.asyncio
-async def test_feed_entry_properties(aresponses, event_loop):
+async def test_feed_entry_properties(mock_aioresponse):
     """Test updating feed is ok with focus on properties."""
     home_coordinates = (-41.2, 174.7)
-    aresponses.add(
-        "www.rfs.nsw.gov.au",
-        "/feeds/majorIncidents.json",
-        "get",
-        aresponses.Response(text=load_fixture("feed-3.json"), status=200),
-        match_querystring=True,
+    mock_aioresponse.get(
+        "https://www.rfs.nsw.gov.au/feeds/majorIncidents.json",
+        status=HTTPStatus.OK,
+        body=load_fixture("feed-3.json"),
     )
 
-    async with aiohttp.ClientSession(loop=event_loop) as websession:
+    async with aiohttp.ClientSession(loop=asyncio.get_running_loop()) as websession:
 
         feed = GenericFeed(
             websession,
