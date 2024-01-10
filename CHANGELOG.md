@@ -1,5 +1,13 @@
 # Changes
 
+## 0.4 (11/01/2024)
+* Bumped version of upstream aio_geojson_client library to 0.20.
+* Improved JSON parsing error handling, especially when not using Python's built-in JSON parsing library.
+* Code quality improvements.
+* Added Python 3.12 support.
+* Bumped library versions: black, flake8, isort.
+* Migrated to pytest.
+
 ## 0.3 (30/01/2023)
 * Restrict geojson dependency to smaller than version 3, to avoid a conflicting 
   dependency with pyowm in Home Assistant.
