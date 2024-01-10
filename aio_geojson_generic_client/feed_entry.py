@@ -3,7 +3,6 @@ import calendar
 import logging
 from datetime import datetime
 from time import strptime
-from typing import Dict, Optional, Tuple
 
 import pytz
 from aio_geojson_client.feed_entry import FeedEntry
@@ -17,7 +16,7 @@ _LOGGER = logging.getLogger(__name__)
 class GenericFeedEntry(FeedEntry):
     """Generic GeoJSON feed entry."""
 
-    def __init__(self, home_coordinates: Tuple[float, float], feature: Feature):
+    def __init__(self, home_coordinates: tuple[float, float], feature: Feature):
         """Initialise this service."""
         super().__init__(home_coordinates, feature)
 
@@ -55,7 +54,7 @@ class GenericFeedEntry(FeedEntry):
         return publication_date
 
     @property
-    def properties(self) -> Optional[Dict]:
+    def properties(self) -> dict | None:
         """Return all properties found for this entry."""
         if self._feature and self._feature.properties:
             return self._feature.properties

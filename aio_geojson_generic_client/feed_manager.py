@@ -1,5 +1,5 @@
 """Feed Manager for Generic GeoJSON feed."""
-from typing import Awaitable, Callable, Tuple
+from collections.abc import Awaitable, Callable
 
 from aio_geojson_client.feed_manager import FeedManagerBase
 from aio_geojson_client.status_update import StatusUpdate
@@ -17,7 +17,7 @@ class GenericFeedManager(FeedManagerBase):
         generate_callback: Callable[[str], Awaitable[None]],
         update_callback: Callable[[str], Awaitable[None]],
         remove_callback: Callable[[str], Awaitable[None]],
-        coordinates: Tuple[float, float],
+        coordinates: tuple[float, float],
         url: str,
         filter_radius: float = None,
         status_callback: Callable[[StatusUpdate], Awaitable[None]] = None,
