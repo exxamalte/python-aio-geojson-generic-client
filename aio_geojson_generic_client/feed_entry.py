@@ -1,4 +1,6 @@
 """Generic GeoJSON feed entry."""
+from __future__ import annotations
+
 import calendar
 import logging
 from datetime import datetime
