@@ -59,7 +59,7 @@ async def test_feed_manager(mock_aioresponse):
         assert entries is not None
         assert len(entries) == 4
         assert feed_manager.last_timestamp == datetime.datetime(
-            2018, 9, 21, 6, 40, tzinfo=datetime.UTC
+            2018, 9, 21, 6, 40, tzinfo=datetime.timezone.utc
         )
         assert len(generated_entity_external_ids) == 4
         assert len(updated_entity_external_ids) == 0

@@ -46,7 +46,7 @@ async def test_update_ok(mock_aioresponse):
         assert round(abs(feed_entry.distance_to_home - 714.4), 1) == 0
         assert repr(feed_entry) == "<GenericFeedEntry(id=1234)>"
         assert feed_entry.publication_date == datetime.datetime(
-            2018, 9, 21, 6, 30, tzinfo=datetime.UTC
+            2018, 9, 21, 6, 30, tzinfo=datetime.timezone.utc
         )
         assert feed_entry.properties == {
             "title": "Title 1",
