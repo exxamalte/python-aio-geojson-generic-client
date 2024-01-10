@@ -1,7 +1,8 @@
 """Generic GeoJSON feed."""
+from __future__ import annotations
+
 import logging
 from datetime import datetime
-from typing import Dict, List, Optional, Tuple
 
 from aio_geojson_client.feed import GeoJsonFeed
 from aiohttp import ClientSession
@@ -18,7 +19,7 @@ class GenericFeed(GeoJsonFeed[GenericFeedEntry]):
     def __init__(
         self,
         websession: ClientSession,
-        home_coordinates: Tuple[float, float],
+        home_coordinates: tuple[float, float],
         url: str,
         filter_radius: float = None,
     ):
@@ -35,14 +36,14 @@ class GenericFeed(GeoJsonFeed[GenericFeedEntry]):
         )
 
     def _new_entry(
-        self, home_coordinates: Tuple[float, float], feature, global_data: Dict
+        self, home_coordinates: tuple[float, float], feature, global_data: dict
     ) -> GenericFeedEntry:
         """Generate a new entry."""
         return GenericFeedEntry(home_coordinates, feature)
 
     def _extract_last_timestamp(
-        self, feed_entries: List[GenericFeedEntry]
-    ) -> Optional[datetime]:
+        self, feed_entries: list[GenericFeedEntry]
+    ) -> datetime | None:
         """Determine latest (newest) entry from the filtered feed."""
         if feed_entries:
             dates = sorted(
@@ -53,6 +54,6 @@ class GenericFeed(GeoJsonFeed[GenericFeedEntry]):
                 return dates[0]
         return None
 
-    def _extract_from_feed(self, feed: FeatureCollection) -> Optional[Dict]:
+    def _extract_from_feed(self, feed: FeatureCollection) -> dict | None:
         """Extract global metadata from feed."""
         return None
