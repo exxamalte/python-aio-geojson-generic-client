@@ -1,11 +1,12 @@
 """Test for the generic GeoJSON feed."""
+
 import asyncio
 import datetime
 from http import HTTPStatus
 
+from aio_geojson_client.consts import UPDATE_OK
 import aiohttp
 import pytest
-from aio_geojson_client.consts import UPDATE_OK
 
 from aio_geojson_generic_client.feed import GenericFeed
 from tests.utils import load_fixture
