@@ -1,4 +1,5 @@
 """Test for the generic GeoJSON feed general setup."""
+
 from aio_geojson_generic_client import __version__
 
 
