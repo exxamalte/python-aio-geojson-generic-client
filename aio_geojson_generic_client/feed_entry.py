@@ -1,14 +1,15 @@
 """Generic GeoJSON feed entry."""
+
 from __future__ import annotations
 
 import calendar
-import logging
 from datetime import datetime
+import logging
 from time import strptime
 
-import pytz
 from aio_geojson_client.feed_entry import FeedEntry
 from geojson import Feature
+import pytz
 
 from .consts import ATTR_GUID, ATTR_ID, ATTR_PUB_DATE, ATTR_TITLE
 

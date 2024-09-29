@@ -1,8 +1,9 @@
 """Generic GeoJSON feed."""
+
 from __future__ import annotations
 
-import logging
 from datetime import datetime
+import logging
 
 from aio_geojson_client.feed import GeoJsonFeed
 from aiohttp import ClientSession
@@ -21,19 +22,14 @@ class GenericFeed(GeoJsonFeed[GenericFeedEntry]):
         websession: ClientSession,
         home_coordinates: tuple[float, float],
         url: str,
-        filter_radius: float = None,
+        filter_radius: float | None = None,
     ):
         """Initialise this service."""
         super().__init__(websession, home_coordinates, url, filter_radius=filter_radius)
 
     def __repr__(self):
         """Return string representation of this feed."""
-        return "<{}(home={}, url={}, radius={})>".format(
-            self.__class__.__name__,
-            self._home_coordinates,
-            self._url,
-            self._filter_radius,
-        )
+        return f"<{self.__class__.__name__}(home={self._home_coordinates}, url={self._url}, radius={self._filter_radius})>"
 
     def _new_entry(
         self, home_coordinates: tuple[float, float], feature, global_data: dict

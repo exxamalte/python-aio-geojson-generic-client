@@ -1,4 +1,5 @@
 """Feed Manager for Generic GeoJSON feed."""
+
 from __future__ import annotations
 
 from collections.abc import Awaitable, Callable
@@ -21,8 +22,8 @@ class GenericFeedManager(FeedManagerBase):
         remove_callback: Callable[[str], Awaitable[None]],
         coordinates: tuple[float, float],
         url: str,
-        filter_radius: float = None,
-        status_callback: Callable[[StatusUpdate], Awaitable[None]] = None,
+        filter_radius: float | None = None,
+        status_callback: Callable[[StatusUpdate], Awaitable[None]] | None = None,
     ):
         """Initialize the Generic GeoJSON Feed Manager."""
         feed = GenericFeed(
