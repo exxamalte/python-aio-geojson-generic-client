@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aio_geojson_generic_client"
-dynamic = ["version"]
+version  = "0.4"
 requires-python = ">= 3.9"
 authors = [
   {name = "Malte Franken", email = "coding@subspace.de"},
@@ -50,9 +50,6 @@ Changelog = "https://github.com/exxamalte/python-aio-geojson-generic-client/blob
 
 [tool.setuptools.packages.find]
 include = ["aio_geojson_generic_client*"]
-
-[tool.setuptools.dynamic]
-version = {attr = "aio_geojson_generic_client.__version__"}
 
 [tool.ruff.lint]
 select = [
