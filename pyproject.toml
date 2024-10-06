@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aio_geojson_generic_client"
-version  = "0.4"
+version  = "0.5"
 requires-python = ">= 3.9"
 authors = [
   {name = "Malte Franken", email = "coding@subspace.de"},
