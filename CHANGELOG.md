@@ -1,5 +1,17 @@
 # Changes
 
+## 2026.6.0 (30/06/2026)
+* Added Python 3.13 support.
+* Added Python 3.14 support.
+* Removed Python 3.9 support.
+* Removed Python 3.10 support.
+* Bump aio_geojson_client to 2026.6.0
+* Bump geojson to 3.3.0
+* Bump pytz to 2026.2
+* Bump ruff to 0.15.20
+* Code quality improvements
+* Changing to date-based versioning
+
 ## 0.5 (06/10/2024)
 * Bump aio_geojson_client to 0.21.
 * Bump geojson to 3.1.0.
