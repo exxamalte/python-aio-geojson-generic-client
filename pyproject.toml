@@ -29,7 +29,7 @@ dependencies = [
     "aio_geojson_client>=0.21",
     "aiohttp>=3.7.4,<4",
     "geojson>=3.1.0",
-    "pytz>=2019.01",
+    "pytz>=2026.2",
 ]
 
 [project.optional-dependencies]
