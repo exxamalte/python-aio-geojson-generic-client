@@ -13,10 +13,10 @@ from tests.utils import load_fixture
 
 
 @pytest.mark.asyncio
-async def test_update_ok(mock_aioresponse):
+async def test_update_ok(mock_aiointercept):
     """Test updating feed is ok."""
     home_coordinates = (-31.0, 151.0)
-    mock_aioresponse.get(
+    mock_aiointercept.get(
         "https://www.rfs.nsw.gov.au/feeds/majorIncidents.json",
         status=HTTPStatus.OK,
         body=load_fixture("feed-1.json"),
@@ -47,7 +47,7 @@ async def test_update_ok(mock_aioresponse):
         assert round(abs(feed_entry.distance_to_home - 714.4), 1) == 0
         assert repr(feed_entry) == "<GenericFeedEntry(id=1234)>"
         assert feed_entry.publication_date == datetime.datetime(
-            2018, 9, 21, 6, 30, tzinfo=datetime.timezone.utc
+            2018, 9, 21, 6, 30, tzinfo=datetime.UTC
         )
         assert feed_entry.properties == {
             "title": "Title 1",
@@ -73,10 +73,10 @@ async def test_update_ok(mock_aioresponse):
 
 
 @pytest.mark.asyncio
-async def test_empty_feed(mock_aioresponse):
+async def test_empty_feed(mock_aiointercept):
     """Test updating feed is ok when feed does not contain any entries."""
     home_coordinates = (-41.2, 174.7)
-    mock_aioresponse.get(
+    mock_aiointercept.get(
         "https://www.rfs.nsw.gov.au/feeds/majorIncidents.json",
         status=HTTPStatus.OK,
         body=load_fixture("feed-2.json"),
@@ -103,10 +103,10 @@ async def test_empty_feed(mock_aioresponse):
 
 
 @pytest.mark.asyncio
-async def test_feed_entry_properties(mock_aioresponse):
+async def test_feed_entry_properties(mock_aiointercept):
     """Test updating feed is ok with focus on properties."""
     home_coordinates = (-41.2, 174.7)
-    mock_aioresponse.get(
+    mock_aiointercept.get(
         "https://www.rfs.nsw.gov.au/feeds/majorIncidents.json",
         status=HTTPStatus.OK,
         body=load_fixture("feed-3.json"),
